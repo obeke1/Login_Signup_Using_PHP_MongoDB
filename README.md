@@ -11,3 +11,5 @@ i. use any editor of your choice for example Notepad++, Sublime text, VisualStud
 ## 4. **Xampp control panel.** 
 i. Download and configure [Xampp control panel](https://www.apachefriends.org/download.html) according to computer system information and operating system.
 ## 5. **PHP(Hyper Pre-Processor).**
+i. if you don't have PHP, download and configure [PHP Installation](https://www.php.net/manual/en/install.php) according to computer system information and operating system. \
+ii. Download and configure [PHP Composer Installation](https://getcomposer.org/download/) according to computer system information and operating system.

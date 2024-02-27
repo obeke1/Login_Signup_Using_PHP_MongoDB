@@ -1,3 +1,37 @@
+<?php
+
+session_start();
+if(!isset($_SESSION['email'])){
+
+    header('Location:  index.php');
+    exit();
+}
+else{
+
+        //retrieve the mongoDB driver from vendor folder
+    require_once 'vendor/autoload.php';
+
+    //Connect to MongoDB database
+    $DBConn = new MongoDB\Client;
+
+    //Connect to specific database in MongoDB
+    $myDBConn = $DBConn -> mongoPHP;
+
+    //Connect to the specific mongoDB collection
+    $myCollection = $myDBConn -> users;
+
+    $userEmail = $_SESSION['email'];
+
+    $data = array(
+        "Email" => $userEmail,
+    );
+
+    //var_dump($data);
+
+    //insert into mongoDB user collection
+    $fetch=$myCollection->findOne($data);
+
+    ?>
 <html>
     <head><title>Sign Up</title></head>
     <body>
@@ -12,3 +46,5 @@
         <a href="profile.php">Go To The Profile Page</a>
     </body
 </html>
+
+<?php } ?>

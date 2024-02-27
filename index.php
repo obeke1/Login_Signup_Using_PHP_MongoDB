@@ -1,7 +1,7 @@
 <html>
     <head><title>Sign In</title></head>
     <body>
-        <form action="" method="POST">
+        <form action="actions/login.php" method="POST">
             <input type="email" placeholder="Email" name="email" id="email" required=""/><br/><br/>
             <input type="text" placeholder="Password" name="password" id="password" required=""/><br/><br/>
             <input type="submit" name="SignIn" id="signIn" value="Sign In" required=""/>

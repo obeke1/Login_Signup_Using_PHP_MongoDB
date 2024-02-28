@@ -35,12 +35,12 @@ else{
 <html>
     <head><title>Sign Up</title></head>
     <body>
-        <form action="" method="POST">
-            <input type="text" placeholder="First Name" name="fname" id="fname" required=""/><br/><br/>
-            <input type="text" placeholder="Last Name" name="lname" id="lname" required=""/><br/><br/>
-            <input type="email" placeholder="Email" name="email" id="email" required=""/><br/><br/>
-            <input type="text" placeholder="Phone Number" name="phoneNo" id="phoneNo" required=""/><br/><br/>
-            <input type="text" placeholder="Password" name="password" id="password" required=""/><br/><br/>
+        <form action="actions/edit-profile.php" method="POST">
+            <input type="text" value="<?php echo $fetch['Firstname']; ?>" name="fname" id="fname" required=""/><br/><br/>
+            <input type="text" value="<?php echo $fetch['Lastname']; ?>" name="lname" id="lname" required=""/><br/><br/>
+            <input type="email" value="<?php echo $fetch['Email']; ?>" name="email" id="email" required=""/><br/><br/>
+            <input type="text" value="<?php echo $fetch['Phone Number']; ?>" name="phoneNo" id="phoneNo" required=""/><br/><br/>
+            <input type="hidden" value="<?php echo $fetch['_id']; ?>" name="hidden_id" id="hidden_id" value=""/><br/><br/>
             <input type="submit" name="update" id="update" value="Update Info" required=""/>
         </form>
         <a href="profile.php">Go To The Profile Page</a>

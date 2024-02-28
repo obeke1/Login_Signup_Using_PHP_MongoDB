@@ -12,53 +12,35 @@ $myDBConn = $DBConn -> mongoPHP;
 //Connect to the specific mongoDB collection
 $myCollection = $myDBConn -> users;
 
-/*if($myCollection){
-    echo "collection" .$myCollection. "Connected";
-}
-else{
-    echo "Failed to connect to database/collection";
-}
-*/
-
-if(isset($_POST['SignUp'])){
+if(isset($_POST['update'])){
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
     $email = $_POST['email'];
     $phoneNo = $_POST['phoneNo'];
-    $password = md5($_POST['password']);
+    $hidden_id = $_POST['hidden_id'];
 }
 
-$data = array(
+$data = array('$set'=> array(
     "Firstname" => $fname,
     "Lastname" => $lname,
     "Email" => $email,
     "Phone Number" => $phoneNo,
-    "Password" => $password
-);
-
-//var_dump($data);
+));
 
 //insert into mongoDB user collection
-$insert=$myCollection->insertOne($data);
-if($insert)
+$update=$myCollection->updateOne(['_id' => new \mongoDB\BSON\ObjectID($hidden_id)], $data);
+if($update)
 {
-    ?>
-    <center>
-        <h4 style='color:green'>Successfully registered</h4>
-    </center>
-    <center>
-        <a href='../index.php'>Login</a>
-    </center>
-    <?php
+    header('Location:../profile.php'); 
 }
 else
 {
     ?>
      <center>
-        <h4 style='color:red'>Registration Failed</h4>
+        <h4 style='color:red'>Update Failed</h4>
     </center>
     <center>
-        <a href='../signup.php'>Try Again</a>
+        <a href="../edit-profile.php?id=<?php echo $hidden_id; ?>">Try Again</a>
     </center>
 
     <?php
